@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>問題演習</title>
+
+<style>
+/* ===== 共通 ===== */
+body {
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
+  background: #f5f7fa;
+  transition: background 0.3s;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+select, input[type="number"], button {
+  padding: 6px 10px;
+  margin-left: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.question {
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.question p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.question label {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+#score {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* ===== 青テーマ（sheet1） ===== */
+.theme-blue h1,
+.theme-blue #score {
+  color: #1e5eff;
+}
+
+.theme-blue button {
+  background: #1e5eff;
+  color: #fff;
+  border: none;
+}
+
+.theme-blue input[type="radio"]:checked {
+  accent-color: #1e5eff;
+}
+
+/* ===== オレンジテーマ（sheet2） ===== */
+.theme-orange h1,
+.theme-orange #score {
+  color: #ff8c00;
+}
+
+.theme-orange button {
+  background: #ff8c00;
+  color: #fff;
+  border: none;
+}
+
+.theme-orange input[type="radio"]:checked {
+  accent-color: #ff8c00;
+}
+
+/* ===== 緑テーマ（sheet3） ===== */
+.theme-green h1,
+.theme-green #score {
+  color: #2e8b57;
+}
+
+.theme-green button {
+  background: #2e8b57;
+  color: #fff;
+  border: none;
+}
+
+.theme-green input[type="radio"]:checked {
+  accent-color: #2e8b57;
+}
+
+.theme-blue {
+  background: linear-gradient(180deg, #eef4ff 0%, #ffffff 100%);
+}
+
+.theme-orange {
+  background: linear-gradient(180deg, #fff3e6 0%, #ffffff 100%);
+}
+
+.theme-green {
+  background: linear-gradient(180deg, #eef7f1 0%, #ffffff 100%);
+}
+</style>
+
+</head>
+<body class="theme-blue">
+
+<h1>RDP練習問題</h1>
+
+<label>
+  問題セット：
+  <select id="sheetSelect">
+    <option value="csv/sheet1.csv" data-theme="theme-blue">RDP-IT</option>
+    <option value="csv/sheet2.csv" data-theme="theme-orange">RDP-顧客</option>
+    <option value="csv/sheet3.csv" data-theme="theme-green">RDP-商品</option>
+  </select>
+</label>
+
+<br><br>
+
+<label>
+  出題数：
+  <input type="number" id="questionLimit" value="50" min="1">
+</label>
+<button onclick="applyLimit()">適用</button>
+
+<hr>
+
+<div id="quiz"></div>
+
+<button onclick="checkAnswers()">回答する</button>
+
+<div id="score"></div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
